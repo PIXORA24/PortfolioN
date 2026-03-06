@@ -173,6 +173,10 @@ body {
   gap:30px;
   overflow-x:auto;
   padding-bottom:10px;
+
+  /* FIX: space for last card */
+  padding-right:70px;
+
   scroll-behavior:smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -187,6 +191,8 @@ body {
 
 .scroll-row .video-card{
   flex:0 0 auto;
+  position:relative;
+  z-index:2;
 }
 
 /* fade hint */
@@ -195,10 +201,17 @@ body {
   content:"";
   position:absolute;
   right:0;
-  top:60px;
-  width:90px;
-  height:70%;
+
+  /* align fade with cards */
+  top:70px;
+
+  /* FIX: smaller fade so card not hidden */
+  width:55px;
+
+  height:65%;
+
   pointer-events:none;
+  z-index:1;
 
   background:linear-gradient(
     to right,
