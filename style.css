@@ -162,12 +162,9 @@ body {
   opacity:.9;
 }
 
-/* scroll hint arrow */
-
 .section h2::after{
   content:"  →";
-  opacity:.4;
-  font-weight:400;
+  opacity:.5;
 }
 
 /* horizontal scroll */
@@ -177,6 +174,10 @@ body {
   gap:30px;
   overflow-x:auto;
   padding-bottom:10px;
+
+  /* allows next card to peek */
+  padding-right:160px;
+
   scroll-behavior:smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -193,14 +194,14 @@ body {
   flex:0 0 auto;
 }
 
-/* right fade hint */
+/* right side fade indicator */
 
 .section::after{
   content:"";
   position:absolute;
   right:0;
   top:60px;
-  width:80px;
+  width:120px;
   height:70%;
   pointer-events:none;
 
