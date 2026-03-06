@@ -211,59 +211,86 @@ body {
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  z-index:50;
+  z-index:60;
 
-  width:42px;
-  height:42px;
+  width:56px;
+  height:56px;
 
   border:none;
   border-radius:50%;
 
-  background:rgba(0,0,0,0.65);
+  background:rgba(0,0,0,0.75);
   color:#fff;
 
-  font-size:22px;
+  font-size:28px;
   cursor:pointer;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  backdrop-filter:blur(6px);
+  backdrop-filter:blur(8px);
+
+  box-shadow:0 6px 18px rgba(0,0,0,.6);
+
   transition:all .25s ease;
 }
+
+/* hover glow */
 
 .scroll-btn:hover{
   background:#fff;
   color:#000;
+
+  box-shadow:
+  0 0 12px rgba(255,255,255,.7),
+  0 0 28px rgba(255,255,255,.35);
 }
 
+/* positions */
+
 .scroll-btn.left{
-  left:-22px;
+  left:-28px;
 }
 
 .scroll-btn.right{
-  right:-22px;
+  right:-28px;
+}
+
+/* subtle glow hint animation */
+
+.scroll-btn.hint{
+  animation:pulseGlow 2.2s infinite;
+}
+
+@keyframes pulseGlow{
+
+  0%{
+    box-shadow:0 0 0 rgba(255,255,255,0);
+  }
+
+  50%{
+    box-shadow:0 0 14px rgba(255,255,255,.4);
+  }
+
+  100%{
+    box-shadow:0 0 0 rgba(255,255,255,0);
+  }
+
 }
 
 /* ---------- MOBILE UX IMPROVEMENTS ---------- */
 
 @media (max-width: 900px) {
 
-  /* hide arrows */
-
   .scroll-btn{
     display:none;
   }
-
-  /* allow next card peek */
 
   .scroll-row{
     padding-right:20px;
     scroll-snap-type:x mandatory;
   }
-
-  /* card width smaller so next card shows */
 
   .video-card{
     min-width:85%;
