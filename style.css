@@ -290,11 +290,13 @@ body {
   .scroll-row{
     padding-right:20px;
     scroll-snap-type:x mandatory;
+    scroll-padding-left:20px;
   }
 
   .video-card{
     min-width:85%;
     scroll-snap-align:start;
+    scroll-snap-stop:always;
   }
 
   .video-card.wide,
