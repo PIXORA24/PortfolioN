@@ -58,6 +58,7 @@ body {
 .video-click {
   cursor: pointer;
   text-align: center;
+  overflow: visible;
 }
 
 .video-click img {
@@ -68,7 +69,7 @@ body {
 }
 
 .video-click:hover img {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 /* Aspect ratios */
@@ -162,6 +163,7 @@ body {
 
 .scroll-wrapper{
   position:relative;
+  overflow:visible;
 }
 
 /* horizontal scroll */
@@ -210,8 +212,8 @@ body {
 .scroll-btn{
   position:absolute;
 
-  /* corrected vertical center */
-  top:42%;
+  /* Perfect center relative to video cards */
+  top:50%;
   transform:translateY(-50%);
 
   z-index:60;
@@ -246,8 +248,8 @@ body {
   color:#000;
 
   box-shadow:
-  0 0 8px rgba(255,255,255,.6),
-  0 0 18px rgba(255,255,255,.25);
+  0 0 10px rgba(255,255,255,.6),
+  0 0 24px rgba(255,255,255,.25);
 }
 
 /* positions */
