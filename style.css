@@ -53,23 +53,36 @@ body {
   margin: auto;
 }
 
+/* VIDEO CARD (IMPORTANT FIX) */
+
+.video-card{
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
 /* Clickable */
 
 .video-click {
   cursor: pointer;
   text-align: center;
-  overflow: visible;
 }
+
+/* IMAGE */
 
 .video-click img {
   width: 100%;
-  border-radius: 14px;
   object-fit: cover;
-  transition: transform .25s ease;
+  border-radius: 14px;
+
+  transition: transform .35s ease;
+  will-change: transform;
 }
 
+/* Hover zoom */
+
 .video-click:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 /* Aspect ratios */
@@ -174,7 +187,7 @@ body {
   overflow-x:auto;
   padding-bottom:10px;
 
-  /* FIX: space for last card */
+  /* space for last card */
   padding-right:70px;
 
   scroll-behavior:smooth;
@@ -201,13 +214,9 @@ body {
   content:"";
   position:absolute;
   right:0;
-
-  /* align fade with cards */
   top:70px;
 
-  /* FIX: smaller fade so card not hidden */
   width:55px;
-
   height:65%;
 
   pointer-events:none;
@@ -294,7 +303,7 @@ body {
 
 }
 
-/* ---------- VIEW MORE CARD ---------- */
+/* VIEW MORE CARD */
 
 .more-card{
   display:flex;
@@ -335,7 +344,7 @@ body {
   transform:scale(1.06);
 }
 
-/* ---------- MOBILE UX IMPROVEMENTS ---------- */
+/* MOBILE */
 
 @media (max-width: 900px) {
 
