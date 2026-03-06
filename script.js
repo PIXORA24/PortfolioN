@@ -2,8 +2,11 @@ const modal = document.getElementById("videoModal");
 const container = document.getElementById("videoContainer");
 const closeBtn = document.querySelector(".close");
 
+/* VIDEO MODAL PLAYER */
+
 document.querySelectorAll(".video-click").forEach(card => {
   card.addEventListener("click", () => {
+
     const vimeoId = card.dataset.vimeo;
     const youtubeId = card.dataset.youtube;
 
@@ -31,10 +34,15 @@ document.querySelectorAll(".video-click").forEach(card => {
 
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
+
   });
 });
 
+
+/* CLOSE MODAL */
+
 closeBtn.addEventListener("click", closeModal);
+
 modal.addEventListener("click", e => {
   if (e.target === modal) closeModal();
 });
@@ -44,3 +52,32 @@ function closeModal() {
   container.innerHTML = "";
   document.body.style.overflow = "";
 }
+
+
+/* SCROLL ARROW LOGIC */
+
+document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
+
+  const row = wrapper.querySelector(".scroll-row");
+  const leftBtn = wrapper.querySelector(".scroll-btn.left");
+  const rightBtn = wrapper.querySelector(".scroll-btn.right");
+
+  if (!row || !leftBtn || !rightBtn) return;
+
+  const scrollAmount = 400;
+
+  rightBtn.addEventListener("click", () => {
+    row.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth"
+    });
+  });
+
+  leftBtn.addEventListener("click", () => {
+    row.scrollBy({
+      left: -scrollAmount,
+      behavior: "smooth"
+    });
+  });
+
+});
