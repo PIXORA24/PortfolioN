@@ -73,27 +73,7 @@ document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
 
   rightBtn.classList.add("hint");
 
-  function updateButtons() {
-
-    const maxScroll = row.scrollWidth - row.clientWidth;
-
-    if (row.scrollLeft <= 0) {
-      leftBtn.style.opacity = "0";
-      leftBtn.style.pointerEvents = "none";
-    } else {
-      leftBtn.style.opacity = "1";
-      leftBtn.style.pointerEvents = "auto";
-    }
-
-    if (row.scrollLeft >= maxScroll - 10) {
-      rightBtn.style.opacity = "0";
-      rightBtn.style.pointerEvents = "none";
-    } else {
-      rightBtn.style.opacity = "1";
-      rightBtn.style.pointerEvents = "auto";
-    }
-
-  }
+  let activated = false;
 
   rightBtn.addEventListener("click", () => {
 
@@ -102,9 +82,14 @@ document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
       behavior: "smooth"
     });
 
-    rightBtn.classList.remove("hint");
+    if (!activated) {
+      activated = true;
 
-    setTimeout(updateButtons, 350);
+      leftBtn.style.opacity = "1";
+      leftBtn.style.pointerEvents = "auto";
+
+      rightBtn.classList.remove("hint");
+    }
 
   });
 
@@ -114,8 +99,6 @@ document.querySelectorAll(".scroll-wrapper").forEach(wrapper => {
       left: -scrollAmount,
       behavior: "smooth"
     });
-
-    setTimeout(updateButtons, 350);
 
   });
 
