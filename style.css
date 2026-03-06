@@ -89,22 +89,6 @@ body {
   opacity: 0.85;
 }
 
-/* MOBILE */
-
-@media (max-width: 900px) {
-
-  .video-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .video-card.wide,
-  .video-card.tall {
-    grid-column: span 1;
-    max-width: 100%;
-  }
-
-}
-
 /* MODAL */
 
 .modal {
@@ -249,14 +233,10 @@ body {
   transition:all .25s ease;
 }
 
-/* hover */
-
 .scroll-btn:hover{
   background:#fff;
   color:#000;
 }
-
-/* positions */
 
 .scroll-btn.left{
   left:-22px;
@@ -266,12 +246,33 @@ body {
   right:-22px;
 }
 
-/* hide arrows on mobile */
+/* ---------- MOBILE UX IMPROVEMENTS ---------- */
 
-@media(max-width:900px){
+@media (max-width: 900px) {
+
+  /* hide arrows */
 
   .scroll-btn{
     display:none;
+  }
+
+  /* allow next card peek */
+
+  .scroll-row{
+    padding-right:20px;
+    scroll-snap-type:x mandatory;
+  }
+
+  /* card width smaller so next card shows */
+
+  .video-card{
+    min-width:85%;
+    scroll-snap-align:start;
+  }
+
+  .video-card.wide,
+  .video-card.tall{
+    max-width:85%;
   }
 
 }
