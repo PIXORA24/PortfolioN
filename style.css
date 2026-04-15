@@ -9,21 +9,153 @@ body {
   color: #fff;
 }
 
-/* Intro */
+/* HERO */
 
-.intro {
-  padding: 60px 20px 40px;
+.hero {
+  padding: 72px 20px 56px;
   text-align: center;
 }
 
-.intro h1 {
-  margin: 0;
-  font-size: 2.4rem;
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-.intro p {
-  margin-top: 8px;
-  opacity: 0.7;
+.hero-name {
+  margin: 0;
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.hero-tagline {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+
+.hero-divider {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #f0a500, transparent);
+  margin: 28px auto;
+}
+
+/* Skills pills */
+
+.hero-skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.hero-skills span {
+  padding: 5px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Bio toggle button */
+
+.bio-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 24px;
+  border: 1px solid rgba(240, 165, 0, 0.45);
+  border-radius: 999px;
+  background: rgba(240, 165, 0, 0.05);
+  color: #f0a500;
+  font-size: 0.78rem;
+  font-family: inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  animation: bioHint 2.6s ease-in-out infinite;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bio-toggle:hover {
+  background: rgba(240, 165, 0, 0.13);
+  border-color: rgba(240, 165, 0, 0.8);
+  box-shadow: 0 0 18px rgba(240, 165, 0, 0.22);
+}
+
+.bio-toggle.open {
+  animation: none;
+  background: rgba(240, 165, 0, 0.1);
+  border-color: rgba(240, 165, 0, 0.7);
+}
+
+.bio-chevron {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  opacity: 0.9;
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+.bio-toggle:hover .bio-chevron {
+  opacity: 1;
+}
+
+.bio-toggle.open .bio-chevron {
+  transform: rotate(-135deg);
+}
+
+@keyframes bioHint {
+  0%, 100% { box-shadow: 0 0 0px rgba(240, 165, 0, 0); }
+  50%       { box-shadow: 0 0 16px rgba(240, 165, 0, 0.3); }
+}
+
+/* Bio panel — collapsible */
+
+.bio-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bio-panel.open {
+  max-height: 1000px;
+}
+
+.bio-panel-inner {
+  padding-top: 24px;
+}
+
+/* Bio card */
+
+.hero-bio {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-left: 2px solid #f0a500;
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+}
+
+.hero-bio p {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  opacity: 0.65;
+}
+
+.hero-bio p:last-child {
+  margin-bottom: 0;
 }
 
 /* GRID */
@@ -59,6 +191,14 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 14px;
+  outline: 1px solid rgba(240, 165, 0, 0.18);
+  box-shadow: 0 0 0 rgba(240, 165, 0, 0);
+  transition: outline-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.video-card:hover{
+  outline-color: rgba(240, 165, 0, 0.45);
+  box-shadow: 0 0 24px rgba(240, 165, 0, 0.18);
 }
 
 /* Clickable */
@@ -344,7 +484,29 @@ body {
   transform:scale(1.06);
 }
 
-/* MOBILE */
+/* FEATURED SECTION */
+
+.featured-section h2 {
+  color: #f0a500;
+  opacity: 1;
+}
+
+.featured-section h2::after {
+  content: "  →";
+  opacity: .25;
+}
+
+/* PORTRAIT MODAL (YouTube Shorts) */
+
+.modal-content.portrait {
+  max-width: 380px;
+}
+
+.modal-content.portrait #videoContainer iframe {
+  aspect-ratio: 9 / 16;
+}
+
+/* MOBILE — tablet & below */
 
 @media (max-width: 900px) {
 
@@ -353,20 +515,88 @@ body {
   }
 
   .scroll-row{
-    padding-right:20px;
+    padding-left:16px;
+    padding-right:16px;
     scroll-snap-type:x mandatory;
-    scroll-padding-left:20px;
+    scroll-padding-left:16px;
   }
 
   .video-card{
-    min-width:85%;
+    min-width:80%;
     scroll-snap-align:start;
     scroll-snap-stop:always;
   }
 
   .video-card.wide,
   .video-card.tall{
-    max-width:85%;
+    max-width:80%;
+  }
+
+  /* fade hint hidden on mobile since buttons are gone */
+  .section::after{
+    display:none;
+  }
+
+}
+
+/* MOBILE — phone */
+
+@media (max-width: 600px) {
+
+  .hero {
+    padding: 52px 16px 40px;
+  }
+
+  .hero-name {
+    font-size: 2.2rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-divider {
+    margin: 22px auto;
+  }
+
+  .hero-skills {
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .hero-skills span {
+    font-size: 0.72rem;
+    padding: 4px 12px;
+  }
+
+  .hero-bio {
+    padding: 18px 16px;
+  }
+
+  .hero-bio p {
+    font-size: 0.85rem;
+    line-height: 1.75;
+  }
+
+  /* modal close button — larger touch target on mobile */
+  .close {
+    top: -44px;
+    font-size: 34px;
+    padding: 6px;
+  }
+
+  /* portrait modal fills phone width */
+  .modal-content.portrait {
+    max-width: 92%;
+  }
+
+  .section {
+    padding: 16px 12px;
+  }
+
+  .section h2 {
+    font-size: 1.1rem;
   }
 
 }

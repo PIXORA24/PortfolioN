@@ -35,6 +35,14 @@ document.querySelectorAll(".video-click").forEach(card => {
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
+    // Portrait mode for Shorts
+    const modalContent = document.querySelector(".modal-content");
+    if (card.dataset.short === "true") {
+      modalContent.classList.add("portrait");
+    } else {
+      modalContent.classList.remove("portrait");
+    }
+
   });
 });
 
@@ -51,6 +59,19 @@ function closeModal() {
   modal.style.display = "none";
   container.innerHTML = "";
   document.body.style.overflow = "";
+}
+
+
+/* BIO TOGGLE */
+
+const bioToggle = document.getElementById("bioToggle");
+const bioPanel  = document.getElementById("bioPanel");
+
+if (bioToggle && bioPanel) {
+  bioToggle.addEventListener("click", () => {
+    const isOpen = bioPanel.classList.toggle("open");
+    bioToggle.classList.toggle("open", isOpen);
+  });
 }
 
 
